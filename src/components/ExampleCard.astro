@@ -25,6 +25,9 @@ const { data } = example;
     {data.featured && <span class="badge">Featured</span>}
     <h3>{data.name}</h3>
     <p class="card__meta">{data.location}</p>
+    <p class="card__credits">
+      {data.credits.architect.name} · {data.credits.greenhouseMaker.name}
+    </p>
     <p class="card__hook">{data.hook}</p>
   </div>
 </a>

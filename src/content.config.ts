@@ -1,9 +1,15 @@
 import { defineCollection, z } from 'astro:content';
 import { glob } from 'astro/loaders';
 
+const credit = z.object({
+  name: z.string(),
+  url: z.string().url().optional(),
+  role: z.string().optional(),
+});
+
 /**
  * Example homes — drop a markdown file (and images) in src/content/examples/.
- * Fields follow docs/profile-schema.md.
+ * Architect and greenhouse maker are required. Fields follow docs/profile-schema.md.
  */
 const examples = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/examples' }),
@@ -17,9 +23,10 @@ const examples = defineCollection({
       uniqueFeatures: z.array(z.string()).min(1),
       status: z.string(),
       credits: z.object({
-        architect: z.string(),
-        greenhouseMaker: z.string(),
-        photo: z.string(),
+        architect: credit,
+        greenhouseMaker: credit,
+        builders: z.array(credit).default([]),
+        photos: z.array(credit).min(1),
       }),
       sources: z.array(
         z.object({

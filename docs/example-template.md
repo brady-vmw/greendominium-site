@@ -10,9 +10,19 @@ uniqueFeatures:
   - Third concrete detail
 status: Built year / occupied / product concept
 credits:
-  architect: Name (practice)
-  greenhouseMaker: Maker / supplier
-  photo: Photographer or publication
+  architect:
+    name: Name (practice)
+    url: https://example.com/architect
+  greenhouseMaker:
+    name: Maker / supplier
+    url: https://example.com/greenhouse
+  builders:
+    - name: Optional steel / glass / structural firm
+      role: Structural
+      url: https://example.com/builder
+  photos:
+    - name: Photographer
+      url: https://example.com/photographer
 sources:
   - title: Source name
     url: https://example.com/article

@@ -1,0 +1,18 @@
+---
+interface Props {
+  name: string;
+  url?: string;
+}
+
+const { name, url } = Astro.props;
+---
+
+{
+  url ? (
+    <a href={url} rel="noopener noreferrer">
+      {name}
+    </a>
+  ) : (
+    <span>{name}</span>
+  )
+}

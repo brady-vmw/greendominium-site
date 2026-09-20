@@ -49,7 +49,9 @@ Drop a markdown file and its images into `src/content/examples/`. Rebuild. That 
 6. Write a short body paragraph if you want intro copy above the facts.
 7. Run `npm run dev` and open `/examples/my-project`.
 
-Do not invent dimensions. If a number is not in a cited source, leave it out of `greenhouse` / `houseInside` and say what is known. Always fill **architect**, **greenhouse maker**, and **photo** credits.
+Do not invent dimensions. If a number is not in a cited source, leave it out of `greenhouse` / `houseInside` and say what is known.
+
+Credits are required and sit near the top of every profile. Always fill **architect / designer**, **greenhouse or shell manufacturer**, and **photos**. Add other builders (steel, glass, structural) when known. Link official homepages when you have them — do not invent affiliations.
 
 ### Required fields
 
@@ -62,9 +64,10 @@ Do not invent dimensions. If a number is not in a cited source, leave it out of 
 | `houseInside` | Living area / stories / material |
 | `uniqueFeatures` | 3–5 (or more) bullets |
 | `status` | Built year / occupied / product concept |
-| `credits.architect` | Architect or design practice |
-| `credits.greenhouseMaker` | Greenhouse / steel maker |
-| `credits.photo` | Photographer or publication |
+| `credits.architect` | `{ name, url? }` — required |
+| `credits.greenhouseMaker` | `{ name, url? }` — required |
+| `credits.builders` | Optional `{ name, role?, url? }` list |
+| `credits.photos` | `{ name, url? }` list — at least one |
 | `sources` | `{ title, url }` list — always cite |
 | `hero` | Local image |
 | `hook` | One line for the card grid |

@@ -11,9 +11,22 @@ uniqueFeatures:
   - Productized story via Norhage Industri + Deforche Construction Group
 status: Built private home / office · often shown as Norhage Industri / Deforche product reference
 credits:
-  architect: "KASECO+ (Rekkem); structural: Buro RR, Kortrijk"
-  greenhouseMaker: Deforche Construct, Izegem · marketed with Norhage Industri
-  photo: Luc Roymans (Infosteel)
+  architect:
+    name: KASECO+ (Rekkem)
+    url: https://www.kaseco.plus/en
+  greenhouseMaker:
+    name: Deforche Construction Group
+    url: https://www.deforchegroup.com/en
+  builders:
+    - name: Buro RR, Kortrijk
+      role: Structural
+      url: https://www.burorr.be/nl/home
+    - name: Norhage Industri
+      role: Marketed with
+      url: https://norhageindustri.com/
+  photos:
+    - name: Luc Roymans
+      url: https://www.roymans.com/
 sources:
   - title: Norhage Industri
     url: https://norhageindustri.com/product/house-in-a-greenhouse/

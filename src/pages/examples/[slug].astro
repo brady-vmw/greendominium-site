@@ -45,6 +45,15 @@ const heroSrc = data.hero.src;
       />
     </figure>
 
+    <div class="credits-top">
+      <CreditsBlock
+        architect={data.credits.architect}
+        greenhouseMaker={data.credits.greenhouseMaker}
+        builders={data.credits.builders}
+        photos={data.credits.photos}
+      />
+    </div>
+
     {
       data.gallery.length > 0 && (
         <div class="gallery">
@@ -93,14 +102,6 @@ const heroSrc = data.hero.src;
     <ul class="features">
       {data.uniqueFeatures.map((feature) => <li>{feature}</li>)}
     </ul>
-
-    <div style="margin: 2rem 0;">
-      <CreditsBlock
-        architect={data.credits.architect}
-        greenhouseMaker={data.credits.greenhouseMaker}
-        photo={data.credits.photo}
-      />
-    </div>
 
     <h2>Sources</h2>
     <ol class="sources">

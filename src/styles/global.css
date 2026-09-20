@@ -368,6 +368,11 @@ img.fit-cover {
   font-weight: 600;
 }
 
+.card__credits {
+  color: var(--forest-mid);
+  font-size: 0.88rem;
+}
+
 .card__hook {
   color: var(--ink-soft);
 }
@@ -433,6 +438,10 @@ img.fit-cover {
   margin: 0;
 }
 
+.credits-top {
+  margin: 1.25rem 0 1.5rem;
+}
+
 .credits {
   background: var(--forest);
   color: #e9efe6;
@@ -442,6 +451,20 @@ img.fit-cover {
 
 .credits h2 {
   color: #f7f3ea;
+}
+
+.credits__lede {
+  margin: 0 0 1rem;
+  color: #c9d8c8;
+}
+
+.credits a {
+  color: #f7f3ea;
+  text-underline-offset: 0.16em;
+}
+
+.credits a:hover {
+  color: #f0c27a;
 }
 
 .credits dl {

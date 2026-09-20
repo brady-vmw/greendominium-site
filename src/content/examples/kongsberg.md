@@ -13,9 +13,17 @@ uniqueFeatures:
   - Rooms against the rear greenhouse wall so windows can open to true outdoors / waterfall sound
 status: Completed ~2019 · family home (architect-owner)
 credits:
-  architect: Margit-Kristine Solibakke Klev (Outline Arkitektur)
-  greenhouseMaker: Drivadan (Denmark)
-  photo: Nadia Norskott; Richard Powers / Inside Living (Guardian)
+  architect:
+    name: Margit-Kristine Solibakke Klev (Outline Arkitektur)
+    url: https://www.outline-ark.no/
+  greenhouseMaker:
+    name: Drivadan (Denmark)
+    url: https://drivadan.dk/en/
+  builders: []
+  photos:
+    - name: Nadia Norskott
+      url: https://www.nadianorskott.no/
+    - name: Richard Powers / Inside Living (Guardian)
 sources:
   - title: Glass og Fasade
     url: https://www.glassogfasade.no/drivhus-med-muligheter/
