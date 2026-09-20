@@ -237,17 +237,30 @@ p:last-child {
   position: relative;
   overflow: hidden;
   border-radius: calc(var(--radius) + 6px);
-  min-height: 280px;
+  aspect-ratio: 4 / 5;
+  max-height: min(70vh, 640px);
   box-shadow: var(--shadow);
 }
 
-.hero__media img,
 .hero__media picture,
-.hero__media :global(img) {
+.card__media picture,
+.detail-hero picture,
+.gallery picture {
+  display: block;
   width: 100%;
   height: 100%;
+}
+
+.hero__media img,
+.card__media img,
+.detail-hero img,
+.gallery img,
+img.fit-cover {
+  width: 100%;
+  height: 100%;
+  max-width: none;
   object-fit: cover;
-  aspect-ratio: 4 / 5;
+  object-position: center 28%;
 }
 
 .hero__copy {
@@ -329,20 +342,17 @@ p:last-child {
 
 .card__media {
   overflow: hidden;
+  aspect-ratio: 4 / 3;
   background: var(--bg-warm);
 }
 
-.card__media img,
-.card__media :global(img) {
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
+.card:hover .card__media img {
+  transform: scale(1.035);
   transition: transform 320ms ease;
 }
 
-.card:hover .card__media img,
-.card:hover .card__media :global(img) {
-  transform: scale(1.035);
+.card__media img {
+  transition: transform 320ms ease;
 }
 
 .card__body {
@@ -381,15 +391,9 @@ p:last-child {
 
 .detail-hero {
   overflow: hidden;
+  aspect-ratio: 16 / 10;
   border-radius: calc(var(--radius) + 6px);
   box-shadow: var(--shadow);
-}
-
-.detail-hero img,
-.detail-hero :global(img) {
-  width: 100%;
-  aspect-ratio: 16 / 10;
-  object-fit: cover;
 }
 
 .gallery {
@@ -398,12 +402,11 @@ p:last-child {
   margin-top: 0.8rem;
 }
 
-.gallery img,
-.gallery :global(img) {
-  width: 100%;
+.gallery picture,
+.gallery > img {
+  overflow: hidden;
   border-radius: var(--radius);
   aspect-ratio: 16 / 10;
-  object-fit: cover;
 }
 
 .facts {
@@ -492,11 +495,8 @@ p:last-child {
     padding-top: 2.2rem;
   }
 
-  .hero__media img,
-  .hero__media picture,
-  .hero__media :global(img) {
-    aspect-ratio: 4 / 5;
-    min-height: 560px;
+  .hero__media {
+    max-height: min(78vh, 720px);
   }
 
   .idea-grid,
