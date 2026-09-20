@@ -1,0 +1,27 @@
+---
+interface Props {
+  architect: string;
+  greenhouseMaker: string;
+  photo: string;
+}
+
+const { architect, greenhouseMaker, photo } = Astro.props;
+---
+
+<section class="credits" aria-labelledby="credits-heading">
+  <h2 id="credits-heading">Credits</h2>
+  <dl>
+    <div>
+      <dt>Architect</dt>
+      <dd>{architect}</dd>
+    </div>
+    <div>
+      <dt>Greenhouse maker</dt>
+      <dd>{greenhouseMaker}</dd>
+    </div>
+    <div>
+      <dt>Photos</dt>
+      <dd>{photo}</dd>
+    </div>
+  </dl>
+</section>

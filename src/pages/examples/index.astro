@@ -1,0 +1,29 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ExampleCard from '../../components/ExampleCard.astro';
+import { getExamples } from '../../lib/examples';
+import { inspirationNote } from '../../lib/site';
+
+const examples = await getExamples();
+---
+
+<BaseLayout
+  title="Examples"
+  description="A gallery of real house-in-greenhouse builds — credited inspiration, not Greendominium products."
+>
+  <div class="wrap">
+    <header class="page-head">
+      <p class="eyebrow">Gallery</p>
+      <h1>Examples</h1>
+      <p class="lede">
+        Real homes under glass. Each card is a project someone else designed and built.
+        Open a profile for climate, dimensions (when published), and credits.
+      </p>
+      <p class="note">{inspirationNote}</p>
+    </header>
+
+    <div class="card-grid">
+      {examples.map((example) => <ExampleCard example={example} />)}
+    </div>
+  </div>
+</BaseLayout>
