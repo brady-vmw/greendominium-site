@@ -1,0 +1,135 @@
+---
+import { Image } from 'astro:assets';
+import { render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CreditsBlock from '../../components/CreditsBlock.astro';
+import { getExamples, examplePath, type Example } from '../../lib/examples';
+import { inspirationNote } from '../../lib/site';
+
+export async function getStaticPaths() {
+  const examples = await getExamples();
+  return examples.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+interface Props {
+  entry: Example;
+}
+
+const { entry } = Astro.props;
+const { data } = entry;
+const { Content } = await render(entry);
+const others = (await getExamples()).filter((example) => example.id !== entry.id);
+const heroSrc = data.hero.src;
+---
+
+<BaseLayout title={data.name} description={data.hook} image={heroSrc}>
+  <div class="wrap">
+    <header class="page-head">
+      <p class="eyebrow">{data.location}</p>
+      <h1>{data.name}</h1>
+      <p class="lede">{data.hook}</p>
+    </header>
+
+    <figure class="detail-hero">
+      <Image
+        src={data.hero}
+        alt={`${data.name} in ${data.location}`}
+        widths={[640, 960, 1400]}
+        sizes="min(1120px, 100vw)"
+        quality={78}
+        priority
+        class="fit-cover"
+      />
+    </figure>
+
+    <div class="credits-top">
+      <CreditsBlock
+        architect={data.credits.architect}
+        greenhouseMaker={data.credits.greenhouseMaker}
+        builders={data.credits.builders}
+        photos={data.credits.photos}
+      />
+    </div>
+
+    {
+      data.gallery.length > 0 && (
+        <div class="gallery">
+          {data.gallery.map((image) => (
+            <Image
+              src={image}
+              alt={`Gallery still of ${data.name}`}
+              widths={[480, 800, 1200]}
+              sizes="(min-width: 760px) 50vw, 100vw"
+              quality={75}
+              class="fit-cover"
+            />
+          ))}
+        </div>
+      )
+    }
+
+    <div class="section" style="padding-bottom: 0;">
+      <Content />
+    </div>
+
+    <dl class="facts">
+      <div class="fact">
+        <dt>Location</dt>
+        <dd>{data.location}</dd>
+      </div>
+      <div class="fact">
+        <dt>Climate</dt>
+        <dd>{data.climate}</dd>
+      </div>
+      <div class="fact">
+        <dt>Greenhouse</dt>
+        <dd>{data.greenhouse}</dd>
+      </div>
+      <div class="fact">
+        <dt>House inside</dt>
+        <dd>{data.houseInside}</dd>
+      </div>
+      <div class="fact">
+        <dt>Status</dt>
+        <dd>{data.status}</dd>
+      </div>
+    </dl>
+
+    <h2>Unique features</h2>
+    <ul class="features">
+      {data.uniqueFeatures.map((feature) => <li>{feature}</li>)}
+    </ul>
+
+    <h2>Sources</h2>
+    <ol class="sources">
+      {
+        data.sources.map((source) => (
+          <li>
+            <a href={source.url} rel="noopener noreferrer">
+              {source.title}
+            </a>
+          </li>
+        ))
+      }
+    </ol>
+
+    <p class="disclaimer">{inspirationNote}</p>
+
+    {
+      others.length > 0 && (
+        <section class="section">
+          <p class="eyebrow">More in the catalog</p>
+          <h2>Other examples</h2>
+          <p>
+            <a href={examplePath(others[0])}>{others[0].data.name}</a>
+            {' · '}
+            <a href="/examples">All examples</a>
+          </p>
+        </section>
+      )
+    }
+  </div>
+</BaseLayout>

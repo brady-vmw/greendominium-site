@@ -1,0 +1,56 @@
+---
+import CreditName from './CreditName.astro';
+
+interface Credit {
+  name: string;
+  url?: string;
+  role?: string;
+}
+
+interface Props {
+  architect: Credit;
+  greenhouseMaker: Credit;
+  builders?: Credit[];
+  photos: Credit[];
+}
+
+const { architect, greenhouseMaker, builders = [], photos } = Astro.props;
+---
+
+<section class="credits" aria-labelledby="credits-heading">
+  <h2 id="credits-heading">Credits</h2>
+  <p class="credits__lede">The people who designed and made this home.</p>
+  <dl>
+    <div>
+      <dt>Architect / designer</dt>
+      <dd><CreditName name={architect.name} url={architect.url} /></dd>
+    </div>
+    <div>
+      <dt>Greenhouse / shell</dt>
+      <dd><CreditName name={greenhouseMaker.name} url={greenhouseMaker.url} /></dd>
+    </div>
+    {
+      builders.map((builder) => (
+        <div>
+          <dt>{builder.role ?? 'Builder'}</dt>
+          <dd>
+            <CreditName name={builder.name} url={builder.url} />
+          </dd>
+        </div>
+      ))
+    }
+    <div>
+      <dt>Photos</dt>
+      <dd>
+        {
+          photos.map((photo, index) => (
+            <>
+              {index > 0 && <span class="credits__sep"> · </span>}
+              <CreditName name={photo.name} url={photo.url} />
+            </>
+          ))
+        }
+      </dd>
+    </div>
+  </dl>
+</section>

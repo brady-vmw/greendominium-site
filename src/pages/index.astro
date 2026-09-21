@@ -1,0 +1,105 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ExampleCard from '../components/ExampleCard.astro';
+import { getExamples } from '../lib/examples';
+import { site } from '../lib/site';
+
+const examples = await getExamples();
+const featured = examples.find((example) => example.data.featured) ?? examples[0];
+---
+
+<BaseLayout>
+  <div class="wrap">
+    <section class="hero">
+      <div class="hero__media">
+        {
+          featured && (
+            <Image
+              src={featured.data.hero}
+              alt={`${featured.data.name} — ${featured.data.location}`}
+              widths={[480, 800, 1200]}
+              sizes="(min-width: 760px) 55vw, 100vw"
+              quality={78}
+              priority
+              class="fit-cover"
+            />
+          )
+        }
+      </div>
+      <div class="hero__copy">
+        <p class="eyebrow">House · glass · garden</p>
+        <h1>{site.tagline}</h1>
+        <p class="lede">
+          Think of a barndominium — but the barn is glass. A compact, livable house sits
+          under a weather-tight shell, and the space between becomes porch, orchard, and extra room.
+        </p>
+        <div class="actions">
+          <a class="btn btn--primary" href="/examples">Browse examples</a>
+          <a class="btn btn--ghost" href="/about">Brady’s path</a>
+        </div>
+        <p class="note">
+          This is an inspiration catalog for Brady’s future build. The homes on this site
+          belong to their architects, makers, and photographers — not to Greendominium.
+        </p>
+      </div>
+    </section>
+  </div>
+
+  <section class="section section--alt">
+    <div class="wrap">
+      <p class="eyebrow">The idea</p>
+      <h2>What a Greendominium is</h2>
+      <p class="lede">
+        A house inside a greenhouse. The glass keeps wind and weather off the living core.
+        In a cold climate that means a usable in-between season. In a milder one, it means
+        shelter, a microclimate, and a garden that does not blow away.
+      </p>
+      <div class="idea-grid">
+        <article class="idea">
+          <span>01</span>
+          <h3>Glass shell</h3>
+          <p>A commercial or custom greenhouse wraps the lot — tall enough for a house, trees, and weather that stays outside.</p>
+        </article>
+        <article class="idea">
+          <span>02</span>
+          <h3>Livable core</h3>
+          <p>A timber or barn-like house sits inside: bedrooms, kitchen, office. Windows can open to the garden or, in some plans, to true outdoors.</p>
+        </article>
+        <article class="idea">
+          <span>03</span>
+          <h3>In-between season</h3>
+          <p>The gap between house and glass is the point — fruit trees, a folding wall to the kitchen, a place to sit when snow is on the ground.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <p class="eyebrow">Start here</p>
+      <h2>Real builds, credited</h2>
+      <p class="lede">
+        Two houses already standing. Use them as a field guide — then add more files as we find the next one.
+      </p>
+      <div class="card-grid" style="margin-top: 1.5rem;">
+        {examples.map((example) => <ExampleCard example={example} />)}
+      </div>
+      <div class="actions">
+        <a class="btn btn--ghost" href="/examples">All examples</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <p class="eyebrow">Along the way</p>
+      <h2>Facebook Page</h2>
+      <p class="lede">
+        Photos, notes, and questions will land on the
+        <a href={site.facebookUrl}>{site.facebookLabel}</a> as the path unfolds.
+        The link is a placeholder until the page is live.
+      </p>
+    </div>
+  </section>
+</BaseLayout>

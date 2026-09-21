@@ -1,0 +1,49 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { site } from '../lib/site';
+---
+
+<BaseLayout
+  title="About"
+  description="Brady Ewing is documenting the path to design and build a Greendominium — a house inside a greenhouse. The examples here are credited inspiration."
+>
+  <div class="wrap">
+    <header class="page-head">
+      <p class="eyebrow">The path</p>
+      <h1>About Greendominium</h1>
+      <p class="lede">
+        Brady Ewing is gathering the notes, stills, and questions that will shape a house
+        inside a greenhouse of his own. This site is the public scrapbook.
+      </p>
+    </header>
+
+    <section>
+      <h2>Not a product line</h2>
+      <p>
+        Greendominium is a name for an idea: a livable core under glass, the barndominium
+        of a greenhouse. The builds in the gallery were designed by other architects and
+        made by other greenhouse shops. Each page names them.
+      </p>
+      <p>
+        We show those homes because they already work. They are credited inspiration, not
+        Greendominium inventory. Architect, greenhouse maker, other builders, and
+        photographers are named on every profile — with links to their own sites when we have them.
+      </p>
+    </section>
+
+    <section class="section" style="padding-top: 1.2rem;">
+      <h2>How the catalog stays small</h2>
+      <p>
+        Brady has almost no spare time. CoS maintains this site. A new example is a
+        markdown file plus images — same fields every time, so the gallery stays scannable.
+      </p>
+      <p>
+        Follow along on the <a href={site.facebookUrl}>{site.facebookLabel}</a> (placeholder
+        until the page is live).
+      </p>
+      <div class="actions">
+        <a class="btn btn--primary" href="/examples">See the examples</a>
+      </div>
+    </section>
+  </div>
+</BaseLayout>
